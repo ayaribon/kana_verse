@@ -39,21 +39,17 @@ jobs:
 
   test:
     runs-on: ubuntu-latest
-
+    env:
+      RAILS_ENV: test
+      DATABASE_URL: mysql2://root:password@127.0.0.1:3306/myapp_test
     services:
       mysql:
         image: mysql
         env:
-          MYSQL_ALLOW_EMPTY_PASSWORD: true
+          MYSQL_ROOT_PASSWORD: password
         ports:
           - 3306:3306
-        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
-
-      # redis:
-      #   image: redis
-      #   ports:
-      #     - 6379:6379
-      #   options: --health-cmd "redis-cli ping" --health-interval 10s --health-timeout 5s --health-retries 5
+        options: --health-cmd="mysqladmin ping -h localhost" --health-interval=10s --health-timeout=5s --health-retries=3
 
     steps:
       - name: Install packages
@@ -68,12 +64,17 @@ jobs:
           ruby-version: .ruby-version
           bundler-cache: true
 
-      - name: Run tests
-        env:
-          RAILS_ENV: test
-          DATABASE_URL: mysql2://127.0.0.1:3306
-          # REDIS_URL: redis://localhost:6379/0
-        run: bin/rails db:test:prepare test test:system
+      - name: Install dependencies
+        run: bundle install --jobs 4 --retry 3
+
+      - name: Setup binstubs
+        run: bundle binstubs rspec-core
+
+      - name: Prepare test database
+        run: bin/rails db:test:prepare
+
+      - name: Run RSpec tests
+        run: bin/rspec
 
       - name: Keep screenshots from failed system tests
         uses: actions/upload-artifact@v4
