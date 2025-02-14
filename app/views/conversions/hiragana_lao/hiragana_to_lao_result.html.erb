@@ -1,0 +1,15 @@
+<main>
+  <div class="result">
+    <div class="hiragana_container">
+      <div class="converted_hiragana">入力したひらがな：</div>
+      <div class="typed_hiragana"><%= @hiragana %></div>
+    </div>
+    <div class="arrow">↓</div>
+    <div class="lao">ラオス文字</div>
+    <div class="lao_container">
+      <div class="conversion_result">変換結果・・・</div>
+      <div class="lao_result"><%= @lao_result %></div>
+    </div>
+    <%= link_to "別のひらがなを変換する", conversions_hiragana_lao_hiragana_to_lao_path, class: "result_button" %>
+  </div>
+</main>
