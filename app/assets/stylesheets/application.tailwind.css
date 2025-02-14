@@ -1,3 +1,334 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+application.css
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column; /* ヘッダー、メイン、フッターを縦に並べる */
+}
+
+.header {
+  width: 100%;
+  height: 100px;
+  background-color: #283141;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  position: fixed; /* 画面上部に固定 */
+  top: 0;
+  left: 0;
+  z-index: 1000; /* 他の要素より前に表示 */
+}
+
+.header_logo img {
+  height: 90px;
+  cursor: pointer;
+}
+
+.header_right {
+  display: flex;
+  gap: 10px;
+}
+
+.header_button {
+  padding: 10px 15px;
+  cursor: pointer;
+  color: white;
+}
+
+.main {
+  flex: 1; /* 余ったスペースを埋める */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 80px;
+  margin-bottom: 35px;
+}
+
+.footer {
+  width: 100%;
+  height: 35px;
+  background-color: #283141;
+  opacity: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 20px;
+  position: fixed; /* 画面下部に固定 */
+  bottom: 0;
+  left: 0;
+}
+
+.footer_box {
+  display: flex;
+  gap: 15px;
+}
+
+.footer_button {
+  cursor: pointer;
+  color: white;
+  font-size: 14px;
+}
+
+/* top.html用 */
+
+
+.top_title {
+  font-size: 70px;
+  font-weight: bold;
+}
+
+.top_sub {
+  font-size: 30px;
+  font-weight: bold;
+  opacity: 50%;
+}
+
+.top_login {
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.top_sign_up {
+  margin-top: 5px;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.top_convert {
+  margin-top: 30px;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* sign_up.html用 */
+
+.form_box {
+  background-color: #D9D9D9;
+  width: 100%;
+  max-width: 500px;
+  padding: 30px;
+  margin: 20px;
+  border-radius: 30px;
+  border: 1px solid #283141;
+}
+
+.form_title {
+  font-size: 30px;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.form {
+  display: flex;
+}
+
+.form_box input,
+.form_box button {
+  width: 100%; /* 入力欄やボタンを横幅いっぱいに */
+  padding: 10px;
+  margin-bottom: 15px; /* 各要素の間に余白を */
+  border: 1px solid #283141;
+  border-radius: 20px;
+}
+
+.form_box button {
+  background-color: #77A0E8;
+  color: white;
+  border: 1px solid #283141;
+  cursor: pointer;
+  width: 125px; /* 最大幅を設定 */
+  margin: 0 auto; /* 水平方向に中央揃え */
+  display: block; /* block要素にして中央揃えを有効に */
+  font-size: 20px;
+}
+
+.form_box button:hover {
+  background-color: #1e2a36;
+}
+
+/* select_language.html用*/
+
+.main_select_language {
+  flex: 1; /* 余ったスペースを埋める */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-top: 150px;
+  margin-bottom: 35px;
+}
+
+.select_language_title {
+  font-size: 40px;
+}
+
+.select_lao_button {
+  display: flex;
+  background-color: #77A0E8;
+  width: 320px;
+  height: 150px;
+  border-radius: 20px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  margin-top: 60px;
+  cursor: pointer;
+}
+
+.select_lao_button:hover {
+  background-color: #1e2a36;
+  color: rgba(255, 255, 255, 0.317);
+}
+
+/* conversion.html用 */
+
+.main_conversion {
+  flex: 1; /* 余ったスペースを埋める */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-top: 150px;
+  margin-bottom: 35px;
+}
+
+.conversion_title {
+  font-size: 30px;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.hiragana_form {
+  width: 100%;
+  max-width: 500px;
+}
+
+.hiragana_form input {
+  width: 100%;
+  padding: 20px;
+  margin-top: 15px;
+  border: 1px solid #283141;
+  border-radius: 30px;
+  background-color: rgb(209, 209, 209);
+  border: 1px solid black;
+}
+
+.hiragana_form button {
+  background-color: #77A0E8;
+  color: white;
+  border: 1px solid #283141;
+  cursor: pointer;
+  width: 125px; /* 最大幅を設定 */
+  margin: 0 auto; /* 水平方向に中央揃え */
+  display: block; /* block要素にして中央揃えを有効に */
+  font-size: 20px;
+  padding: 10px;
+  border-radius: 20px;
+  margin-top: 30px;
+}
+
+.hiragana_form button:hover {
+  background-color: #1e2a36;
+  color: rgba(255, 255, 255, 0.317);
+}
+
+/* conversion_result用 */
+
+.result {
+  flex: 1;
+  display: flex;
+  flex-direction: column; /* 要素を縦に並べる */
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 150px;
+  margin-bottom: 35px;
+}
+
+.hiragana_container {
+  display: flex;
+  align-items: center;
+  gap: 5px; /* 「入力したひらがな」と入力欄の間隔を調整 */
+}
+
+.converted_hiragana {
+  font-size: 20px;
+}
+
+.typed_hiragana {
+  width: 400px;
+  padding: 20px;
+  border-radius: 30px;
+  background-color: rgb(209, 209, 209);
+  border: 1px solid black;
+}
+
+.arrow {
+  font-size: 50px;
+  margin-left: 170px;
+}
+
+.lao {
+  font-size: 30px;
+  margin-left: 170px;
+}
+
+.lao_container {
+  display: flex;
+  align-items: center;
+}
+
+.conversion_result {
+  font-size: 30px;
+  margin-left: 30px;
+}
+
+.lao_result {
+  width: 620px;
+  height: 70px;
+  padding: 20px;
+  margin-right: 60px;
+  border-radius: 30px;
+  background-color: white;
+  border: 1px solid black;
+}
+
+.result button {
+  background-color: #77A0E8;
+  color: white;
+  border: 1px solid #283141;
+  cursor: pointer;
+  width: 300px; /* 最大幅を設定 */
+  font-size: 20px;
+  padding: 10px;
+  border-radius: 20px;
+  margin-top: 30px;
+  margin-left: 170px;
+}
+
+.result button:hover {
+  background-color: #1e2a36;
+  color: rgba(255, 255, 255, 0.317);
+}
