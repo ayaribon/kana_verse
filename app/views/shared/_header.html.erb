@@ -3,7 +3,7 @@
     <%= image_tag "S__22192130.jpg", height: "90" %>
   </span>
   <span class="header_right">
-    <span class="header_button">ログアウト</span>
-    <span class="header_button">新規登録</span>
+    <%= link_to 'ログアウト', logout_path, class: 'header_button', data: { turbo_method: :delete } %>
+    <span class="header_button">変換する</span>
   </span>
 </div>

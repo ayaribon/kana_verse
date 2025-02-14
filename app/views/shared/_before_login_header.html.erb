@@ -3,7 +3,7 @@
     <%= image_tag "S__22192130.jpg", height: "90" %>
   </span>
   <span class="header_right">
-    <span class="header_button">ログイン</span>
-    <span class="header_button">新規登録</span>
+    <%= link_to 'ログイン', login_path, :class => 'header_button' %>
+    <%= link_to '新規登録', new_user_path, :class => 'header_button' %>
   </span>
 </div>
