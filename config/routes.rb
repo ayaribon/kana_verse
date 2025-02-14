@@ -5,10 +5,26 @@ Rails.application.routes.draw do
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
 
-  # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
-  # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
-  # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
+  # Render dynamic PWA files from app/views/pwa/*
+  get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
+  get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
 
   # Defines the root path route ("/")
   # root "posts#index"
+  # ルートページ（静的ページ）
+  root "static_pages#top"
+
+  # ログイン関連のルート
+  get "login", to: "user_sessions#new", as: :login
+  post "login", to: "user_sessions#create"
+  delete "logout", to: "user_sessions#destroy", as: :logout
+
+  # 新規登録関連のルート
+  resources :users, only: [ :new, :create ]
+
+  # newアクションを使って変換ページを表示
+  get "new", to: "converts#new"
+
+  # ひらがなをラオス文字に変換するPOSTリクエスト
+  post "convert", to: "converts#convert"
 end

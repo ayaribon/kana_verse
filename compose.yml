@@ -3,7 +3,9 @@ services:
     image: mysql:8.0
     environment:
       TZ: Asia/Tokyo
-      MYSQL_ROOT_PASSWORD: password
+      MYSQL_ROOT_PASSWORD: password  # ルートパスワード
+      MYSQL_DATABASE: what-is-your-name_test      # 初期データベース名
+      DATABASE_URL: mysql2://root:password@127.0.0.1:3306/what-is-your-name_test
     volumes:
       - mysql_data:/var/lib/mysql
     ports:

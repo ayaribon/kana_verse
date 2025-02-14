@@ -1,0 +1,38 @@
+[33mcommit 55da40faabdeeb8c91b76ce89099cbf74a880dc0[m[33m ([m[1;36mHEAD -> [m[1;32mfeature/03_translation_rule[m[33m)[m
+Author: ayaribon <kubotaren5213@docomo.ne.jp>
+Date:   Tue Oct 29 19:48:55 2024 +0900
+
+    seed with kana_type
+
+[33mcommit 11d8b14227e81ff5f0e2b85e897a06db367ae30b[m
+Author: ayaribon <kubotaren5213@docomo.ne.jp>
+Date:   Mon Oct 28 17:23:47 2024 +0900
+
+    add: 濁音etcの概念
+
+[33mcommit 4258df9b8c727517b8165652ada557e3805cd39c[m
+Author: ayaribon <kubotaren5213@docomo.ne.jp>
+Date:   Mon Oct 28 13:52:11 2024 +0900
+
+    fix db to make it simple
+
+[33mcommit aae7565b85e7e3df014e5ab774d9070f2240f3d9[m
+Author: ayaribon <kubotaren5213@docomo.ne.jp>
+Date:   Mon Oct 28 06:06:03 2024 +0900
+
+    add:語末の短母音化
+
+[33mcommit 339f0e25337b87684a01b2c21e6643c4eb4d368b[m
+Author: ayaribon <kubotaren5213@docomo.ne.jp>
+Date:   Mon Oct 28 02:58:42 2024 +0900
+
+    fix Lao data
+
+[33mcommit 1b166a3c44d3d623accd07e065fe040fd6c654db[m[33m ([m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m)[m
+Merge: 6f2d876 7b819c4
+Author: ayaribon <140035375+ayaribon@users.noreply.github.com>
+Date:   Sun Oct 27 04:09:03 2024 +0900
+
+    Merge pull request #4 from ayaribon/feature/02_Lao_model
+    
+    Feature/02 lao model
