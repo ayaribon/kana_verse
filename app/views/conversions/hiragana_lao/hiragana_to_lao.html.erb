@@ -2,8 +2,8 @@
   <div class="hiragana_form">
     <div class="conversion_title">ひらがな→ラオス文字</div>
     <%= form_with url: conversions_hiragana_lao_hiragana_to_lao_path, method: :post, local: true do |form| %>
-      <%= form.text_field :hiragana, class "hiragana_form_input", placeholder: "ひらがなを入力..." %>
-      <%= form.submit "変換", class: 'hiragana_form_button' %>
+      <%= form.text_field :hiragana, class: "hiragana_form_input", placeholder: "ひらがなを入力..." %>
+      <%= form.submit "変換", class: "hiragana_form_button" %>
     <% end %>
   </div>
 </div>
