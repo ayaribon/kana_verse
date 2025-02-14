@@ -14,4 +14,7 @@ Rails.application.routes.draw do
   get "login", to: "user_sessions#new"
   post "login", to: "user_sessions#create"
   delete "logout", to: "user_sessions#destroy"
+  get "conversions_hiragana_lao_hiragana_to_lao", to: "conversions/hiragana_lao#hiragana_to_lao"
+  post "conversions_hiragana_lao_hiragana_to_lao", to: "conversions/hiragana_lao#hiragana_to_lao"
+  get "conversions/hiragana_lao/hiragana_to_lao_result", to: "conversions/hiragana_lao#hiragana_to_lao_result", as: "hiragana_to_lao_result"
 end

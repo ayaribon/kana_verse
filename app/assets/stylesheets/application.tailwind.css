@@ -126,6 +126,12 @@ html, body {
   font-size: 40px;
   font-weight: bold;
   cursor: pointer;
+  text-decoration: none;
+  color: rgb(155, 155, 155);
+}
+
+.top_convert:hover {
+  color: black;
 }
 
 /* sign_up.html用 */
