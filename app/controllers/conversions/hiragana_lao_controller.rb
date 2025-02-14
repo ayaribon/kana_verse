@@ -438,7 +438,7 @@ class Conversions::HiraganaLaoController < ApplicationController
 
 
 
-    words = hiragana.split(/[　 ]/) # 全角スペースまたは半角スペースで分割
+    words = hiragana.split(/[　 ]/)
     lao_output = []
 
     words.each do |word|
@@ -446,63 +446,57 @@ class Conversions::HiraganaLaoController < ApplicationController
       converted_word = []
       prev_char = nil
       next_char = nil
-      processed_vowel = false  # すでに処理された母音フラグ
-      processed_set = false  # 「え段 + い」「お段 + う」のセット処理済みフラグ
+      processed_vowel = false
+      processed_set = false
 
       characters.each_with_index do |char, index|
         next_char = characters[index + 1] if index + 1 < characters.length
 
-        # 「っ」や「ー」は変換しない
         next if char == "っ" || char == "ー"
 
-        # 「え段」+「い」 or 「お段」+「う」を1セットで処理
         if !processed_set && prev_char && (
-          (hiragana_rows[prev_char] == 4 && char == "い") ||  # え段 + い
-          (hiragana_rows[prev_char] == 5 && char == "う")     # お段 + う
+          (hiragana_rows[prev_char] == 4 && char == "い") ||
+          (hiragana_rows[prev_char] == 5 && char == "う")
         )
-          processed_set = true  # 一度処理したら以降の処理と分離
-          converted_word.pop  # 直前の prev_char の変換結果を削除してセット処理
-          converted_word << (hiragana_to_lao_long[prev_char] || prev_char)  # え段・お段の文字
-          converted_word << (hiragana_to_lao_long[char] || char)  # い or う の文字
-          prev_char = char  # prev_char を現在の char に更新して影響を防ぐ
-          next  # もう1回変換されるのを防ぐ
+          processed_set = true
+          converted_word.pop
+          converted_word << (hiragana_to_lao_long[prev_char] || prev_char)
+          converted_word << (hiragana_to_lao_long[char] || char)
+          prev_char = char
+          next
         end
 
-        # 「い」や「う」の後に、同じ段の母音が来た場合は処理をスキップ
         if %w[い う].include?(char) && prev_char && (
             (char == "い" && hiragana_rows[prev_char] == 4) ||
             (char == "う" && hiragana_rows[prev_char] == 5)
           )
-          next  # 連続する母音（「え段の後にい」、「お段の後にう」）はスキップ
+          next
         end
 
-        # 通常の母音の処理
         if %w[あ い う え お].include?(char)
           if prev_char && hiragana_rows[prev_char] == hiragana_rows[char] && !processed_vowel
-            processed_vowel = true  # 連続する母音を1回だけ処理
-            next  # 次の母音はスキップ
+            processed_vowel = true
+            next
           end
-          processed_vowel = false  # 新しい母音が来たらリセット
+          processed_vowel = false
           if index == characters.length - 1
-            converted_word << (hiragana_to_lao_short[char] || char)  # 最後の文字は短のラオス文字
+            converted_word << (hiragana_to_lao_short[char] || char)
           else
-            converted_word << (hiragana_to_lao_long[char] || char)   # 他の文字は長のラオス文字
+            converted_word << (hiragana_to_lao_long[char] || char)
           end
-        # 文字列の最後の文字の処理
         elsif index == characters.length - 1
           converted_word << (hiragana_to_lao_short[char] || char)
-        # その他の処理
         else
           if next_char == "っ"
-            converted_word << (hiragana_to_lao_short[char] || char)  # 促音があれば短にする
+            converted_word << (hiragana_to_lao_short[char] || char)
           elsif next_char == "ん"
-            converted_word << (hiragana_to_lao_special[char] || char)  # んは特のラオス文字に変換
+            converted_word << (hiragana_to_lao_special[char] || char)
           else
-            converted_word << (hiragana_to_lao_long[char] || char)  # その他の文字は長のラオス文字
+            converted_word << (hiragana_to_lao_long[char] || char)
           end
         end
 
-        prev_char = char  # ここで prev_char を更新
+        prev_char = char
       end
       lao_output << converted_word.join
     end
