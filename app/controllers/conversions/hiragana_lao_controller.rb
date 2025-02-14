@@ -451,10 +451,22 @@ class Conversions::HiraganaLaoController < ApplicationController
 
       characters.each_with_index do |char, index|
         next_char = characters[index + 1] if index + 1 < characters.length
+        if char == "っ"
+          next
+        elsif char == "ー"
+          next
+        elsif %w[ぁ ぃ ぅ ぇ ぉ ゃ ゅ ょ].include?(char) && prev_char && hiragana_to_lao_long[prev_char + char]
+          converted_word.pop
 
-        next if char == "っ" || char == "ー"
-
-        if %w[あ い う え お].include?(char)
+          lao_char = if next_char == "ん"
+                       hiragana_to_lao_special[prev_char + char]
+          elsif next_char == "っ" || index == characters.length - 1
+                       hiragana_to_lao_short[prev_char + char]
+          else
+                       hiragana_to_lao_long[prev_char + char]
+          end
+          converted_word << (lao_char || prev_char + char)
+        elsif %w[あ い う え お].include?(char)
           if prev_char && hiragana_rows[prev_char] == hiragana_rows[char] && !processed_vowel
             processed_vowel = true
             next
