@@ -454,25 +454,6 @@ class Conversions::HiraganaLaoController < ApplicationController
 
         next if char == "っ" || char == "ー"
 
-        if !processed_set && prev_char && (
-          (hiragana_rows[prev_char] == 4 && char == "い") ||
-          (hiragana_rows[prev_char] == 5 && char == "う")
-        )
-          processed_set = true
-          converted_word.pop
-          converted_word << (hiragana_to_lao_long[prev_char] || prev_char)
-          converted_word << (hiragana_to_lao_long[char] || char)
-          prev_char = char
-          next
-        end
-
-        if %w[い う].include?(char) && prev_char && (
-            (char == "い" && hiragana_rows[prev_char] == 4) ||
-            (char == "う" && hiragana_rows[prev_char] == 5)
-          )
-          next
-        end
-
         if %w[あ い う え お].include?(char)
           if prev_char && hiragana_rows[prev_char] == hiragana_rows[char] && !processed_vowel
             processed_vowel = true
