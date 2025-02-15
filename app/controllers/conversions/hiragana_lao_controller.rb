@@ -19,7 +19,7 @@ class Conversions::HiraganaLaoController < ApplicationController
 
   def convert_hiragana_to_lao(hiragana)
     hiragana_to_lao_long = {
-      #あ行
+      # あ行
       "あ" => "ອາ", "い" => "ອີ", "う" => "ອູ", "え" => "ເອ", "お" => "ໂອ",
 
       # か行
