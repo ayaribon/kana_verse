@@ -1,15 +1,6 @@
-<% if logged_in? %>
-  <div class="main">
-    <div class="top_title">かなバース</div>
-    <div class="top_sub">ひらがなを外国語の文字に換えてみましょう！</div>
-    <%= link_to '変換する', select_language_path, :class => 'top_convert' %>
-  </div>
-<% else %>
-  <div class="main">
-    <div class="top_title">かなバース</div>
-    <div class="top_sub">ひらがなを外国語の文字に換えてみましょう！</div>
-    <%= link_to 'ログイン', login_path, :class => 'top_login' %>
-    <%= link_to '新規登録', new_user_path, :class => 'top_sign_up' %>
-  </div>
-<% end %>
+<div class="main">
+  <div class="top_title">かなバース</div>
+  <div class="top_sub">ひらがなを外国語の文字に換えてみましょう！</div>
+  <%= link_to '変換する', select_language_path, :class => 'top_convert' %>
+</div>
 
